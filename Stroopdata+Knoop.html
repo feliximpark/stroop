@@ -11781,7 +11781,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The <strong>independent variable</strong> is the color of the ink used to write the words.</p>
+<p>The <strong>independent variable</strong> (or sometimes called experimental oder prdictor variable) is the variable, which is being manipulated for the experiment. In our case it is the color of the ink used to write the words - or, to be more precise, the fact whether the meaning of the word's content is related to the colour of the letters or not.</p>
 <p>The <strong>dependent variable</strong> is the time that participants need to complete the test.</p>
 
 </div>
@@ -11808,6 +11808,25 @@ div#notebook {
 <p>$\begin{equation*}
 \mathbf{H}_1  = \mu_c - \mu_i &lt; \mathbf {0}
 \end{equation*}$</p>
+<p><strong>Definition</strong>:</p>
+<p>$\begin{equation*}
+\mathbf{H}_0
+\end{equation*}$ - 
+the Symbol for our null hypothesis (no significant differences between the two tests). The null hypothesis often states that there is no effect or that the relationship investigated does not exist. This thesis must be discarded in order to accept the alternative hypothesis. This procedure is intended to minimize the possibility of a class 1 error (assuming the alternative hypothesis, although the null hypothesis is correct).</p>
+<p>$\begin{equation*}
+\mathbf{H}_1
+\end{equation*}$ - 
+the Symbol for the alternative hypothesis. Usually this hypothesis should be proven (means: the H0 hypothesis should be rejected). The alternative hypothesis must not overlap with the null hypothesis.</p>
+<p>$\begin{equation*}
+\mu_c
+\end{equation*}$ - Symbol for the population mean of needed time during experiments in which color and word meaning are congruent.</p>
+<p>$\begin{equation*}
+\mu_i
+\end{equation*}$ - Symbol for the population mean of needed time during experiments in which color and word meaning are incongruent.</p>
+<p>We choose a Paired T test here to verify our results. The reason: We are dealing here with the results of one test person, i.e. value pairs. We can best examine these with the Paired-T test.</p>
+<p>We assume that the population data is distributed almost normally. Furthermore, we assume (central limit theorem) that the mean values of the samples are normally distributed with sufficiently high data. However, the sample of 24 is relatively small. As a rule of thumb: from a sample of 30, we can assume that the mean values are normally distributed.</p>
+<p>But: The more similar the measured values are in a population, the sooner we can assume that the sample is also normally distributed despite the small number of values. This is given here.</p>
+<p>Since we do not know the variance of the population and the sample size of 24 is less than 30, a Z-test is not possible.</p>
 
 </div>
 </div>
@@ -11823,7 +11842,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[101]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -11846,7 +11865,7 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[101]:</div>
+<div class="prompt output_prompt">Out[6]:</div>
 
 
 
@@ -12009,12 +12028,12 @@ Median incongruent: 21.0175
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[69]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Standard Deviation of congruent and incongruent test</span>
-<span class="n">std_cong</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Congruent&quot;</span><span class="p">])</span>
-<span class="n">std_incong</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Incongruent&quot;</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Sample Standard Deviation of congruent and incongruent test</span>
+<span class="n">std_cong</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Congruent&quot;</span><span class="p">],</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">std_incong</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Incongruent&quot;</span><span class="p">],</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Standard Deviation congruent: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">std_cong</span><span class="p">))</span>
 <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Standard Deviation incongruent: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">std_incong</span><span class="p">))</span>
 </pre></div>
@@ -12033,8 +12052,8 @@ Median incongruent: 21.0175
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Standard Deviation congruent: 3.4844157127666326
-Standard Deviation incongruent: 4.696055134513317
+<pre>Standard Deviation congruent: 3.559357957645195
+Standard Deviation incongruent: 4.797057122469138
 </pre>
 </div>
 </div>
@@ -12054,10 +12073,10 @@ Standard Deviation incongruent: 4.696055134513317
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[95]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">df</span> <span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df</span> <span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12070,25 +12089,13 @@ Standard Deviation incongruent: 4.696055134513317
 
 <div class="output_area">
 
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>C:\Users\Felix\Anaconda3\lib\site-packages\seaborn\categorical.py:2171: UserWarning: The boxplot API has been changed. Attempting to adjust your arguments for the new API (which might not work). Please update your code. See the version 0.6 release notes for more info.
-  warnings.warn(msg, UserWarning)
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[95]:</div>
+<div class="prompt output_prompt">Out[10]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1c3739a7828&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x2683891e0b8&gt;</pre>
 </div>
 
 </div>
@@ -12199,7 +12206,7 @@ fA24l1bXIS1EQ8DdEXEXrWG4m9s8X3Ng5y1JBbLzlqQCGd6SVCDDW5IKZHhLUoEMb0kq0P8Boskk
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[99]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Congruent&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Incongruent&quot;</span><span class="p">])</span>
@@ -12215,7 +12222,7 @@ fA24l1bXIS1EQ8DdEXEXrWG4m9s8X3Ng5y1JBbLzlqQCGd6SVCDDW5IKZHhLUoEMb0kq0P8Boskk
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[99]:</div>
+<div class="prompt output_prompt">Out[11]:</div>
 
 
 
@@ -12336,7 +12343,6 @@ tCQV9r+VmCgVbxjYJAAAAABJRU5ErkJggg==
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We choose a Paired T test here to verify our results. The reason: We are dealing here with the results of one test person, i.e. value pairs. We can best examine these with the Paired-T test.</p>
 <p>For avoiding an Type-I-Error, we are setting alpha to 0.05.</p>
 
 </div>
@@ -12398,20 +12404,6 @@ tCQV9r+VmCgVbxjYJAAAAABJRU5ErkJggg==
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Processes that humans have internalized in such a way that they are largely automatic are difficult to suppress. If we deviate from our usual routines and have to use a new approach when solving a task, it is rather difficult and takes time.</p>
 <p>This phenomenon is not only likely to occur in the automated process of reading, but in many other areas of life. Wherever what has been learned runs automatically after some time, it costs a lot of concentration to approach things differently. One example is sport. For example, anyone who has used a certain stroke technique in table tennis for ten years and should suddenly change it will also need time.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>(7) external sources:</strong></p>
-<p><a href="https://matplotlib.org/tutorials/introductory/sample_plots.html#sphx-glr-tutorials-introductory-sample-plots-py">https://matplotlib.org/tutorials/introductory/sample_plots.html#sphx-glr-tutorials-introductory-sample-plots-py</a>
-<a href="http://jupyter-notebook.readthedocs.io/en/stable/examples/Notebook/Typesetting%20Equations.html">http://jupyter-notebook.readthedocs.io/en/stable/examples/Notebook/Typesetting%20Equations.html</a>
-<a href="https://en.wikipedia.org/wiki/Stroop_effect">https://en.wikipedia.org/wiki/Stroop_effect</a>
-<a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html">https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html</a>
-<a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_rel.html">https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_rel.html</a></p>
 
 </div>
 </div>
